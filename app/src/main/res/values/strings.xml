@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TTL Editor</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ttl_editor_help">This application is useful for circumventing carrier-imposed restrictions on tethering/mobile hotspot mode. It allows you to request that all packets leaving on a given interface have the same TTL (time-to-live) value, which may be enough to defeat tether detection.\n\nSet new TTL:</string>
+
+</resources>
