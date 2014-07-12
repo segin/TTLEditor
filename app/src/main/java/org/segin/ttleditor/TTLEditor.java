@@ -28,7 +28,7 @@ public class TTLEditor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
-        enumerateNetworkInterfaces();
+        // enumerateNetworkInterfaces();
         makeButtonDoStuff();
     }
 
@@ -37,7 +37,7 @@ public class TTLEditor extends Activity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TTLEditor.this, "button pressed", Toast.LENGTH_SHORT);
+                Toast.makeText(TTLEditor.this, "button pressed", Toast.LENGTH_SHORT).show();
             }
         });
     }
