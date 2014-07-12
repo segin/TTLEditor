@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.util.Log;
@@ -37,7 +38,17 @@ public class TTLEditor extends Activity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TTLEditor.this, "button pressed", Toast.LENGTH_SHORT).show();
+                EditText newttl = (EditText) findViewById(R.id.ttlValue);
+                int ttl = Integer.parseInt(newttl.getText().toString());
+                String msg;
+                if (ttl > 255) {
+                    msg = "TTL too high: " + newttl.getText().toString();
+                } else if (ttl < 0) {
+                    msg = "TTL too low: " + newttl.getText().toString();
+                } else {
+                    msg = "button pressed";
+                }
+                Toast.makeText(TTLEditor.this, msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
