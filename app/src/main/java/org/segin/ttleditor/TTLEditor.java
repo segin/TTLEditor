@@ -2,6 +2,8 @@ package org.segin.ttleditor;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -18,16 +20,30 @@ import java.util.List;
 
 public class TTLEditor extends Activity {
 
+    private Spinner spinner;
+    private Button btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
         enumerateNetworkInterfaces();
+        makeButtonDoStuff();
+    }
+
+    protected void makeButtonDoStuff() {
+        btnSubmit = (Button) findViewById(R.id.button);
+        btnSubmit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TTLEditor.this, "button pressed");
+            }
+        });
     }
 
     protected void enumerateNetworkInterfaces() {
-        Spinner spinner = (Spinner) findViewById(R.id.ifList);
+        if (spinner != null) spinner = (Spinner) findViewById(R.id.ifList);
         List<String> ifnames = new ArrayList<String>();
         try {
             for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
