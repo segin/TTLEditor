@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
     }
-    compileSdkVersion 'android-L'
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 'android-19'
+    buildToolsVersion '19.1.0'
     defaultConfig {
         applicationId 'org.segin.ttleditor'
         minSdkVersion 11
