@@ -4,6 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.util.Log;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.net.NetworkInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TTLEditor extends Activity {
@@ -12,8 +22,26 @@ public class TTLEditor extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
+
+        enumerateNetworkInterfaces();
     }
 
+    protected void enumerateNetworkInterfaces() {
+        Spinner spinner = (Spinner) findViewById(R.id.ifList);
+        List<String> ifnames = new ArrayList<String>();
+        try {
+            for(Enumeration<NetworkInterface> list = NetworkInterface.getNetworkInterfaces(); list.hasMoreElements();)
+            {
+                NetworkInterface i = list.nextElement();
+                ifnames.add(i.getDisplayName());
+                Log.e("network_interfaces", "display name " + i.getDisplayName());
+            }
+
+        } catch (SocketException e) {
+            ifnames.add("none");
+            Log.wtf("network_interfaces", "SocketException occurred getting names!", e);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
