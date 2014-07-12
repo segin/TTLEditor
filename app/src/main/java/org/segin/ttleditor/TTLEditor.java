@@ -37,7 +37,7 @@ public class TTLEditor extends Activity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TTLEditor.this, "button pressed");
+                Toast.makeText(TTLEditor.this, "button pressed", Toast.LENGTH_SHORT);
             }
         });
     }
