@@ -53,14 +53,14 @@ public class TTLEditor extends Activity {
                 ifnames.add(i.getDisplayName());
                 Log.e("network_interfaces", "display name " + i.getDisplayName());
             }
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_spinner_item, ifnames);
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(dataAdapter);
         } catch (SocketException e) {
             ifnames.add("none");
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
         }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, ifnames);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
     }
 
     @Override
