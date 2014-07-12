@@ -1,21 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 'android-L'
-    buildToolsVersion "20.0.0"
-
+    buildToolsVersion '20.0.0'
     defaultConfig {
-        applicationId "org.segin.ttleditor"
+        applicationId 'org.segin.ttleditor'
         minSdkVersion 11
         targetSdkVersion 'L'
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
     }
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+        }
+    }
+    productFlavors {
     }
 }
 
