@@ -58,6 +58,18 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/ttlValue"
         android:layout_alignEnd="@+id/ttlValue"
-        android:text="@string/default_iface" />
+        android:text="@string/default_iface"
+        android:inputType="text" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ifList"
+        android:layout_below="@+id/ifaceName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/ifaceName"
+        android:layout_alignEnd="@+id/ifaceName"
+        android:spinnerMode="dropdown" />
 
 </RelativeLayout>
