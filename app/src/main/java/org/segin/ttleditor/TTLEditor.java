@@ -59,7 +59,7 @@ public class TTLEditor extends Activity {
             spinner.setAdapter(dataAdapter);
         } catch (SocketException e) {
             ifnames.add("none");
-            Log.wtf("network_interfaces", "SocketException occurred getting names!", e);
+            Log.e("network_interfaces", "SocketException occurred getting names!", e);
         }
     }
 
