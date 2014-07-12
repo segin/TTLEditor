@@ -30,13 +30,17 @@ public class TTLEditor extends Activity {
         Spinner spinner = (Spinner) findViewById(R.id.ifList);
         List<String> ifnames = new ArrayList<String>();
         try {
-            for(Enumeration<NetworkInterface> list = NetworkInterface.getNetworkInterfaces(); list.hasMoreElements();)
+            for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
+                ifaces.hasMoreElements();)
             {
-                NetworkInterface i = list.nextElement();
+                NetworkInterface i = ifaces.nextElement();
                 ifnames.add(i.getDisplayName());
                 Log.e("network_interfaces", "display name " + i.getDisplayName());
             }
-
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, ifnames);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(dataAdapter);
         } catch (SocketException e) {
             ifnames.add("none");
             Log.wtf("network_interfaces", "SocketException occurred getting names!", e);
