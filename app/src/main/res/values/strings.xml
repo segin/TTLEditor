@@ -8,7 +8,15 @@
     <string name="default_ttl">64</string>
     <string name="accept_btn">OK</string>
     <string name="ifname_help">Interface name?</string>
-    <string name="default_iface">rmnet0_sdio</string>
     <string name="debug_help">DEBUG</string>
+    <string name="desc_ttl">TTL</string>
+    <string name="desc_iface">Network interface</string>
+    <string name="ip_help">IP Address(es):\n</string>
+    <string name="dialog_name">Confirm</string>
+    <string name="dialog_text">Are you sure you want to modify TTL on selected interface?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="no_address">Interface has no IP addresses.</string>
+    <string name="no_iface_access">Unable to access interface information (SocketError).</string>
 
 </resources>
