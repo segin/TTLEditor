@@ -48,7 +48,7 @@ public class TTLEditor extends Activity {
                 String msg;
                 if (ttl > 255) {
                     msg = "TTL too high: " + newttl.getText().toString();
-                } else if (ttl < 0) {
+                } else if (ttl < 1) {
                     msg = "TTL too low: " + newttl.getText().toString();
                 } else {
                     msg = "button pressed";
