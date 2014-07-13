@@ -24,7 +24,7 @@
     <string name="ttl_low">TTL too low: %s</string>
     <string name="ttl_high">TTL too high: %s</string>
     <string name="about_name">About TTL Editor</string>
-    <string name="about_text">Copyright © 2014 Kirn Gill &lt;segin2005@gmail.com&gt;.\n\nAdditional thanks to:\n\nMattis Michel: Advice and API help\nDaniel Strand (m4dh4x0r): Debugging, testing\nRaj Rajan: Testing\nElvis Mongaré: Testing</string>
+    <string name="about_text">Copyright © 2014 Kirn Gill &lt;segin2005@gmail.com&gt;.\n\nAdditional thanks to:\n\nMattis Michel: Advice, API help\nDaniel Strand (m4dh4x0r): Debugging, testing\nRaj Rajan: Testing\nElvis Mongaré: Testing, Dutch translation</string>
 
     <plurals name="iface_count">
         <item quantity="one">Found 1 network interface.</item>
