@@ -71,16 +71,16 @@ public class TTLEditor extends Activity {
                 NetworkInterface i = ifaces.nextElement();
                 ifnames.add(i.getDisplayName());
                 Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
-                dbg.concat("Interface found: " + i.getDisplayName() + "\n");
+                dbg += "Interface found: " + i.getDisplayName() + "\n";
             }
         } catch (SocketException e) {
             ifnames.add("none");
-            dbg.concat("Couldn't find interfaces! (Permissions issue?)\n");
+            dbg += "Couldn't find interfaces! (Permissions issue?)\n";
             debugText.setText(dbg);
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
         } catch (NullPointerException e) {
             Log.e("TTLEditor", "NullPointerException occurred?", e);
-            dbg.concat("NullPointerException occurred!");
+            dbg += "NullPointerException occurred!";
             debugText.setText(dbg);
             doToast("wtf? " + e.toString());
         }
