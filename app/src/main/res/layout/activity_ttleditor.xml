@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ifname_help"
-        android:id="@+id/textView"
+        android:id="@+id/ifnameText"
         android:layout_below="@+id/ttlValue"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ifaceName"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/ifnameText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/ttlValue"
@@ -71,5 +71,17 @@
         android:layout_alignRight="@+id/ifaceName"
         android:layout_alignEnd="@+id/ifaceName"
         android:spinnerMode="dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/debug_help"
+        android:id="@+id/debugText"
+        android:layout_below="@+id/ifList"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

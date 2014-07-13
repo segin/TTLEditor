@@ -9,5 +9,6 @@
     <string name="accept_btn">OK</string>
     <string name="ifname_help">Interface name?</string>
     <string name="default_iface">rmnet0_sdio</string>
+    <string name="debug_help">DEBUG</string>
 
 </resources>
