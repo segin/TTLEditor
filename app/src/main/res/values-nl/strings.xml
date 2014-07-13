@@ -4,7 +4,7 @@
     <string name="app_name">TTL Editor</string>
     <string name="action_settings">Instellingen</string>
     <string name="action_about">Over</string>
-    <string name="ttl_editor_help">Deze applicatie is geschikt voor het omzeilen van provider opgelegde beperkingen op mobiel internet tethering. Het laat u toe een netwerk interface in te stellen zo dat alle vertrekkende pakketten op die interface de zelfde TTL (time-to-live) waarde hebben. Dit kan genoeg zijn om uw provider's tethering detectie systeem te vermijden.\n\nNieuwe TTL:</string>
+    <string name="ttl_editor_help">Deze applicatie is geschikt voor het omzeilen van provider opgelegde beperkingen op mobiel internet tethering. Het laat u toe een netwerk interface in te stellen zo dat alle vertrekkende pakketten op die interface de zelfde TTL (time-to-live) waarde hebben. Dit kan genoeg zijn om uw provider\'s tethering detectie systeem te vermijden.\n\nNieuwe TTL:</string>
     <string name="ifname_help">Interface-naam?</string>
     <string name="desc_ttl">TTL</string>
     <string name="desc_iface">Netwerk interface</string>
@@ -31,7 +31,5 @@
         <item quantity="one">Ã‰Ã©n IP adres:\n</item>
         <item quantity="other">%d IP adressen:\n</item>
     </plurals>
-
-
 
 </resources>
