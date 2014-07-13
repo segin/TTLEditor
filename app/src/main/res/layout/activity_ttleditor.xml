@@ -70,7 +70,7 @@
         android:text="@string/debug_help"
         android:id="@+id/debugText"
         android:longClickable="false"
-        android:maxLines = "AN_INTEGER"
+        android:maxLines = "300"
         android:scrollbars = "vertical"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
