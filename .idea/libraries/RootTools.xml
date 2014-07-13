@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/app/libs/RootTools.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$USER_HOME$/My Documents/GitHub/RootTools/RootTools/src" />
+    </SOURCES>
   </library>
 </component>
