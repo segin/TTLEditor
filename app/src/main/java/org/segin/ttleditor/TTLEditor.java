@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 import java.net.SocketException;
@@ -33,6 +34,10 @@ public class TTLEditor extends Activity {
         makeButtonDoStuff();
     }
 
+    private void doToast(String msg) {
+        Toast.makeText(TTLEditor.this, msg, Toast.LENGTH_SHORT).show();
+    }
+
     protected void makeButtonDoStuff() {
         btnSubmit = (Button) findViewById(R.id.button);
         btnSubmit.setOnClickListener(new OnClickListener() {
@@ -48,7 +53,7 @@ public class TTLEditor extends Activity {
                 } else {
                     msg = "button pressed";
                 }
-                Toast.makeText(TTLEditor.this, msg, Toast.LENGTH_SHORT).show();
+                doToast(msg);
             }
         });
     }
@@ -56,22 +61,32 @@ public class TTLEditor extends Activity {
     protected void enumerateNetworkInterfaces() {
         if (spinner != null) spinner = (Spinner) findViewById(R.id.ifList);
         List<String> ifnames = new ArrayList<String>();
+        String dbg = new String("Debug: \n");
         try {
             for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
             {
                 NetworkInterface i = ifaces.nextElement();
                 ifnames.add(i.getDisplayName());
-                Log.e("network_interfaces", "display name " + i.getDisplayName());
+                Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
+                dbg.concat("Interface found: " + i.getDisplayName() + "\n");
             }
         } catch (SocketException e) {
             ifnames.add("none");
+            dbg.concat("Couldn't find interfaces! (Permissions issue?)\n");
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
+        } catch (NullPointerException e) {
+            Log.e("TTLEditor", "NullPointerException occurred?", e);
+            dbg.concat("NullPointerException occurred!");
+            doToast("wtf? " + e.toString());
         }
+        TextView debugText = (TextView) findViewById(R.id.debugText);
+        debugText.setText(dbg);
+        if (ifnames.size() == 0) ifnames.add("none");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, ifnames);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+        //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spinner.setAdapter(dataAdapter);
     }
 
     @Override
