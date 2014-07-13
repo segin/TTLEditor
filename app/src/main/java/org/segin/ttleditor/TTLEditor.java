@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class TTLEditor extends Activity {
 
     private Spinner spinner;
     private Button btnSubmit;
+    private TextView debugText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,37 +61,38 @@ public class TTLEditor extends Activity {
     }
 
     protected void enumerateNetworkInterfaces() {
-        if (spinner != null) spinner = (Spinner) findViewById(R.id.ifList);
+        if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
+        if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
         List<String> ifnames = new ArrayList<String>();
         String dbg = "Debug: \n";
-        TextView debugText = (TextView) findViewById(R.id.debugText);
         debugText.setText(dbg);
         try {
             for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
             {
                 NetworkInterface i = ifaces.nextElement();
-                ifnames.add(i.getDisplayName());
+                ifnames.add(i.getDisplayName().toString());
                 Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
                 dbg += "Interface found: " + i.getDisplayName() + "\n";
             }
         } catch (SocketException e) {
             ifnames.add("none");
             dbg += "Couldn't find interfaces! (Permissions issue?)\n";
-            debugText.setText(dbg);
+            debugText.setText(dbg, TextView.BufferType.NORMAL);
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
         } catch (NullPointerException e) {
             Log.e("TTLEditor", "NullPointerException occurred?", e);
-            dbg += "NullPointerException occurred!";
-            debugText.setText(dbg);
             doToast("wtf? " + e.toString());
+            dbg += "NullPointerException occurred!";
+            debugText.setText(dbg, TextView.BufferType.NORMAL);
         }
+        dbg += "Found " + String.valueOf(ifnames.size()) + "network interfaces.\n";
         debugText.setText(dbg);
         if (ifnames.size() == 0) ifnames.add("none");
-        //ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-        //        android.R.layout.simple_spinner_item, ifnames);
-        //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinner.setAdapter(dataAdapter);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, ifnames);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
     }
 
     @Override
