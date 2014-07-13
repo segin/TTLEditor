@@ -30,7 +30,7 @@ public class TTLEditor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
-        // enumerateNetworkInterfaces();
+        enumerateNetworkInterfaces();
         makeButtonDoStuff();
     }
 
@@ -61,7 +61,9 @@ public class TTLEditor extends Activity {
     protected void enumerateNetworkInterfaces() {
         if (spinner != null) spinner = (Spinner) findViewById(R.id.ifList);
         List<String> ifnames = new ArrayList<String>();
-        String dbg = new String("Debug: \n");
+        String dbg = "Debug: \n";
+        TextView debugText = (TextView) findViewById(R.id.debugText);
+        debugText.setText(dbg);
         try {
             for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
@@ -80,11 +82,10 @@ public class TTLEditor extends Activity {
             dbg.concat("NullPointerException occurred!");
             doToast("wtf? " + e.toString());
         }
-        TextView debugText = (TextView) findViewById(R.id.debugText);
         debugText.setText(dbg);
         if (ifnames.size() == 0) ifnames.add("none");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, ifnames);
+        //ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+        //        android.R.layout.simple_spinner_item, ifnames);
         //dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spinner.setAdapter(dataAdapter);
     }
