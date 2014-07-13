@@ -1,6 +1,8 @@
 package org.segin.ttleditor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -11,12 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
+
+import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class TTLEditor extends Activity {
     private Spinner spinner;
     private Button btnSubmit;
     private TextView debugText;
+    private TextView ipText;
     private Enumeration<NetworkInterface> ifaces;
 
     @Override
@@ -49,23 +54,67 @@ public class TTLEditor extends Activity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText newttl = (EditText) findViewById(R.id.ttlValue);
-                int ttl = Integer.parseInt(newttl.getText().toString());
-                String msg;
-                if (ttl > 255) {
-                    msg = "TTL too high: " + newttl.getText().toString();
-                } else if (ttl < 1) {
-                    msg = "TTL too low: " + newttl.getText().toString();
-                } else {
-                    msg = "button pressed";
-                }
-                doToast(msg);
+                buildDialog();
             }
         });
     }
 
-    protected void updateIPAddress() {
+    protected void changeTTL() {
+        EditText newttl = (EditText) findViewById(R.id.ttlValue);
+        int ttl = Integer.parseInt(newttl.getText().toString());
+        String msg;
+        if (ttl > 255) {
+            msg = "TTL too high: " + newttl.getText().toString();
+        } else if (ttl < 1) {
+            msg = "TTL too low: " + newttl.getText().toString();
+        } else {
+            msg = "button pressed";
+        }
+        doToast(msg);
+    }
 
+    protected void buildDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
+        alertDialogBuilder.setTitle(getString(R.string.dialog_name));
+        alertDialogBuilder
+                .setMessage(getString(R.string.dialog_text))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.dialog_yes),new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        changeTTL();
+                    }
+                })
+                .setNegativeButton(getString(R.string.dialog_no),new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    protected void updateIPAddress() {
+        if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
+        if (ipText == null) ipText = (TextView) findViewById(R.id.ipText);
+        NetworkInterface iface;
+        List<InetAddress> addresses;
+        try {
+            iface = NetworkInterface.getByName(
+                    spinner.getSelectedItem().toString());
+            String msg = getString(R.string.ip_help);
+            addresses = Collections.list(iface.getInetAddresses());
+            if (addresses.size() < 1)
+                ipText.setText(msg + getString(R.string.no_address));
+            else {
+                for (InetAddress address : addresses) {
+                    msg += address.getHostAddress() + "\n";
+                }
+                ipText.setText(msg);
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+            ipText.setText(getString(R.string.ip_help) + getString(R.string.no_iface_access));
+        }
     }
 
     protected void makeSpinnerDoStuff() {
@@ -73,7 +122,7 @@ public class TTLEditor extends Activity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                updateIPAddress();
             }
 
             @Override
