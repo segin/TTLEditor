@@ -8,7 +8,7 @@
     <string name="default_ttl">64</string>
     <string name="accept_btn">OK</string>
     <string name="ifname_help">Interface name?</string>
-    <string name="debug_help">DEBUG</string>
+    <string name="debug_help">Debug: \n</string>
     <string name="desc_ttl">TTL</string>
     <string name="desc_iface">Network interface</string>
     <string name="ip_help">IP Address(es):\n</string>
@@ -18,5 +18,13 @@
     <string name="dialog_no">No</string>
     <string name="no_address">Interface has no IP addresses.</string>
     <string name="no_iface_access">Unable to access interface information (SocketError).</string>
+    <string name="none">none</string>
+    <string name="if_found">Interface found: %s\n</string>
+
+    <plurals name="iface_count">
+        <item quantity="one">Found 1 network interface.</item>
+        <item quantity="other">Found %d network interfaces.</item>
+    </plurals>
+
 
 </resources>

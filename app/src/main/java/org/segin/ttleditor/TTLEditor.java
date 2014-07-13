@@ -3,6 +3,7 @@ package org.segin.ttleditor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -34,6 +35,8 @@ public class TTLEditor extends Activity {
     private TextView debugText;
     private TextView ipText;
     private Enumeration<NetworkInterface> ifaces;
+    private Resources res = getResources();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +87,8 @@ public class TTLEditor extends Activity {
                         changeTTL();
                     }
                 })
-                .setNegativeButton(getString(R.string.dialog_no),new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+                .setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
@@ -136,7 +139,7 @@ public class TTLEditor extends Activity {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
         List<String> ifnames = new ArrayList<String>();
-        String dbg = "Debug: \n";
+        String dbg = res.getString(R.string.debug_help);
         debugText.setText(dbg);
         debugText.setMovementMethod(new ScrollingMovementMethod());
         try {
@@ -146,10 +149,10 @@ public class TTLEditor extends Activity {
                 NetworkInterface i = ifaces.nextElement();
                 ifnames.add(i.getDisplayName());
                 Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
-                dbg += "Interface found: " + i.getDisplayName() + "\n";
+                dbg += String.format(res.getString(R.string.if_found), i.getDisplayName());
             }
         } catch (SocketException e) {
-            ifnames.add("none");
+            ifnames.add(getString(R.string.none));
             dbg += "Couldn't find interfaces! (Permissions issue?)\n";
             debugText.setText(dbg, TextView.BufferType.NORMAL);
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
@@ -159,9 +162,9 @@ public class TTLEditor extends Activity {
             dbg += "NullPointerException occurred!";
             debugText.setText(dbg, TextView.BufferType.NORMAL);
         }
-        dbg += "Found " + String.valueOf(ifnames.size()) + "network interfaces.\n";
+        dbg += res.getQuantityString(R.plurals.iface_count, ifnames.size(), ifnames.size());
         debugText.setText(dbg);
-        if (ifnames.size() == 0) ifnames.add("none");
+        if (ifnames.size() == 0) ifnames.add(getString(R.string.none));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, ifnames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
