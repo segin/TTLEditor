@@ -2,10 +2,12 @@ package org.segin.ttleditor;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +28,7 @@ public class TTLEditor extends Activity {
     private Spinner spinner;
     private Button btnSubmit;
     private TextView debugText;
+    private Enumeration<NetworkInterface> ifaces;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class TTLEditor extends Activity {
 
         enumerateNetworkInterfaces();
         makeButtonDoStuff();
+        makeSpinnerDoStuff();
     }
 
     private void doToast(String msg) {
@@ -41,7 +45,7 @@ public class TTLEditor extends Activity {
     }
 
     protected void makeButtonDoStuff() {
-        btnSubmit = (Button) findViewById(R.id.button);
+        if (btnSubmit == null) btnSubmit = (Button) findViewById(R.id.button);
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,18 +64,38 @@ public class TTLEditor extends Activity {
         });
     }
 
+    protected void updateIPAddress() {
+
+    }
+
+    protected void makeSpinnerDoStuff() {
+        if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
     protected void enumerateNetworkInterfaces() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
         List<String> ifnames = new ArrayList<String>();
         String dbg = "Debug: \n";
         debugText.setText(dbg);
+        debugText.setMovementMethod(new ScrollingMovementMethod());
         try {
-            for(Enumeration<NetworkInterface> ifaces = NetworkInterface.getNetworkInterfaces();
+            for(ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
             {
                 NetworkInterface i = ifaces.nextElement();
-                ifnames.add(i.getDisplayName().toString());
+                ifnames.add(i.getDisplayName());
                 Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
                 dbg += "Interface found: " + i.getDisplayName() + "\n";
             }

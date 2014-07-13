@@ -17,7 +17,8 @@
         android:text="@string/ttl_editor_help"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:labelFor="@+id/ttlValue" />
 
     <EditText
         android:id="@+id/ttlValue"
@@ -28,7 +29,9 @@
         android:text="@string/default_ttl"
         android:layout_below="@+id/helpText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:clickable="false"
+        android:contentDescription="@string/desc_ttl" />
 
     <Button
         android:id="@+id/button"
@@ -47,30 +50,19 @@
         android:id="@+id/ifnameText"
         android:layout_below="@+id/ttlValue"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ifaceName"
-        android:layout_below="@+id/ifnameText"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/ttlValue"
-        android:layout_alignEnd="@+id/ttlValue"
-        android:text="@string/default_iface"
-        android:inputType="text" />
+        android:labelFor="@+id/ifList" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ifList"
-        android:layout_below="@+id/ifaceName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/ifaceName"
-        android:layout_alignEnd="@+id/ifaceName"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:contentDescription="@string/desc_iface"
+        android:layout_below="@+id/ifnameText"
+        android:layout_alignRight="@+id/ttlValue" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,6 +74,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:longClickable="false"
+        android:maxLines = "AN_INTEGER"
+        android:scrollbars = "vertical" />
 
 </RelativeLayout>
