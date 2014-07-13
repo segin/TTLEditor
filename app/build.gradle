@@ -31,4 +31,5 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/RootTools.jar')
 }

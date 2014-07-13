@@ -20,10 +20,20 @@
     <string name="no_iface_access">Unable to access interface information (SocketError).</string>
     <string name="none">none</string>
     <string name="if_found">Interface found: %s\n</string>
+    <string name="pressed">button pressed</string>
+    <string name="ttl_low">TTL too low: %s</string>
+    <string name="ttl_high">TTL too high: %s</string>
+    <string name="about_name">About TTL Editor</string>
+    <string name="about_text">Copyright © 2014 Kirn Gill &lt;segin2005@gmail.com&gt;.\n\nAdditional thanks to:\nMattis Michel: Advice and API help\nDaniel Strand (m4dh4x0r): Debugging, testing\nRaj Rajan: Testing\nElvis Mongaré: Testing</string>
 
     <plurals name="iface_count">
         <item quantity="one">Found 1 network interface.</item>
         <item quantity="other">Found %d network interfaces.</item>
+    </plurals>
+    <plurals name="ip_count">
+        <item quantity="zero">Interface has no IP addresses.\n</item>
+        <item quantity="one">One IP Address:\n</item>
+        <item quantity="other">%d IP Addresses:\n</item>
     </plurals>
 
 

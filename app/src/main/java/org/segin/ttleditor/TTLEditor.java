@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
+import com.stericson.RootTools.*;
 
 import java.net.InetAddress;
 import java.net.SocketException;
@@ -35,17 +36,25 @@ public class TTLEditor extends Activity {
     private TextView debugText;
     private TextView ipText;
     private Enumeration<NetworkInterface> ifaces;
-    private Resources res = getResources();
-
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
+        RootTools.isRootAvailable();
+
+        try {
+            res = getResources();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
         enumerateNetworkInterfaces();
         makeButtonDoStuff();
         makeSpinnerDoStuff();
+
     }
 
     private void doToast(String msg) {
@@ -67,11 +76,11 @@ public class TTLEditor extends Activity {
         int ttl = Integer.parseInt(newttl.getText().toString());
         String msg;
         if (ttl > 255) {
-            msg = "TTL too high: " + newttl.getText().toString();
+            msg = String.format(res.getString(R.string.ttl_high), newttl.getText().toString());
         } else if (ttl < 1) {
-            msg = "TTL too low: " + newttl.getText().toString();
+            msg = String.format(res.getString(R.string.ttl_low), newttl.getText().toString());
         } else {
-            msg = "button pressed";
+            msg = getString(R.string.pressed);
         }
         doToast(msg);
     }
@@ -96,6 +105,21 @@ public class TTLEditor extends Activity {
         alertDialog.show();
     }
 
+    protected void buildAboutDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
+        alertDialogBuilder.setTitle(getString(R.string.about_name));
+        alertDialogBuilder
+                .setMessage(getString(R.string.about_text))
+                .setCancelable(true)
+                .setNegativeButton(getString(R.string.accept_btn), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     protected void updateIPAddress() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         if (ipText == null) ipText = (TextView) findViewById(R.id.ipText);
@@ -104,16 +128,15 @@ public class TTLEditor extends Activity {
         try {
             iface = NetworkInterface.getByName(
                     spinner.getSelectedItem().toString());
-            String msg = getString(R.string.ip_help);
             addresses = Collections.list(iface.getInetAddresses());
-            if (addresses.size() < 1)
-                ipText.setText(msg + getString(R.string.no_address));
-            else {
+            String msg = res.getQuantityString(R.plurals.ip_count,
+                    addresses.size(), addresses.size());
+            if (addresses.size() >= 1) {
                 for (InetAddress address : addresses) {
                     msg += address.getHostAddress() + "\n";
                 }
-                ipText.setText(msg);
             }
+            ipText.setText(msg);
         } catch (SocketException e) {
             e.printStackTrace();
             ipText.setText(getString(R.string.ip_help) + getString(R.string.no_iface_access));
@@ -186,6 +209,9 @@ public class TTLEditor extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id == R.id.action_about) {
+            buildAboutDialog();
         }
         return super.onOptionsItemSelected(item);
     }
