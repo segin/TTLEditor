@@ -20,6 +20,7 @@ import android.widget.Toast;
 import android.util.Log;
 import com.stericson.RootTools.*;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Collections;
@@ -43,7 +44,30 @@ public class TTLEditor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
-        RootTools.isRootAvailable();
+        if (RootTools.isRootAvailable()) {
+            if (RootTools.isBusyboxAvailable()) {
+                Log.i("TTLEditor","Root and BusyBox are available.");
+            } else {
+                buildOfferBusyBoxDialog();
+            }
+        } else {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
+            alertDialogBuilder.setTitle(getString(R.string.rootalert_name));
+            alertDialogBuilder
+                    .setMessage(getString(R.string.rootalert_text))
+                    .setCancelable(true)
+                    .setNegativeButton(getString(R.string.accept_btn), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            try {
+                                TTLEditor.this.finalize();
+                            } catch (Throwable e) {
+                                Log.wtf("TTLEditor", "wtf, cannot Activity.finalize()?", e);
+                            }
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
 
         try {
             res = getResources();
@@ -71,18 +95,47 @@ public class TTLEditor extends Activity {
         });
     }
 
-    protected void changeTTL() {
+    protected void validateTTL() {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         int ttl = Integer.parseInt(newttl.getText().toString());
-        String msg;
+        String msg = null;
         if (ttl > 255) {
             msg = String.format(res.getString(R.string.ttl_high), newttl.getText().toString());
         } else if (ttl < 1) {
             msg = String.format(res.getString(R.string.ttl_low), newttl.getText().toString());
         } else {
-            msg = getString(R.string.pressed);
+            buildDialog();
         }
-        doToast(msg);
+        if (msg != null)
+            doToast(msg);
+    }
+
+    protected void changeTTL() {
+        EditText newttl = (EditText) findViewById(R.id.ttlValue);
+        String ttl = newttl.getText().toString();
+        if (RootTools.isAccessGiven()) {
+            String cmdLine = String.format(getString(R.string.iptables_cmdline),
+                    spinner.getSelectedItem().toString(), newttl.getText().toString());
+            Process exec = null;
+            try {
+                exec = Runtime.getRuntime().exec(new String[]{"su", "-c", cmdLine});
+                exec.waitFor();
+                if (exec.exitValue() != 0)
+                    doToast(getString(R.string.ttl_failure));
+                else
+                    doToast(getString(R.string.ttl_success));
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("TLLEditor", "iptables failed.", e);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Log.e("TLLEditor", "iptables received signal before completing.", e);
+            } finally {
+                if (exec != null) exec.destroy();
+            }
+        } else
+            doToast(getString(R.string.no_root_access));
+
     }
 
     protected void buildDialog() {
@@ -112,6 +165,26 @@ public class TTLEditor extends Activity {
                 .setMessage(getString(R.string.about_text))
                 .setCancelable(true)
                 .setNegativeButton(getString(R.string.accept_btn), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    protected void buildOfferBusyBoxDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
+        alertDialogBuilder.setTitle(getString(R.string.offer_name));
+        alertDialogBuilder
+                .setMessage(getString(R.string.offer_name))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        RootTools.offerBusyBox(TTLEditor.this);
+                    }
+                })
+                .setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
