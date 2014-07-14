@@ -90,7 +90,7 @@ public class TTLEditor extends Activity {
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                buildDialog();
+                validateTTL();
             }
         });
     }
@@ -103,10 +103,9 @@ public class TTLEditor extends Activity {
             msg = String.format(res.getString(R.string.ttl_high), newttl.getText().toString());
         } else if (ttl < 1) {
             msg = String.format(res.getString(R.string.ttl_low), newttl.getText().toString());
-        } else {
+        } else if (msg == null) {
             buildDialog();
-        }
-        if (msg != null)
+        } else
             doToast(msg);
     }
 
