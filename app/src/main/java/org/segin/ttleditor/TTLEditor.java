@@ -99,13 +99,14 @@ public class TTLEditor extends Activity {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         int ttl = Integer.parseInt(newttl.getText().toString());
         String msg = null;
-        if (ttl > 255) {
+        if (ttl > 255)
             msg = String.format(res.getString(R.string.ttl_high), newttl.getText().toString());
-        } else if (ttl < 1) {
+        else if (ttl < 1)
             msg = String.format(res.getString(R.string.ttl_low), newttl.getText().toString());
-        } else if (msg == null) {
+
+        if (msg == null)
             buildDialog();
-        } else
+        else
             doToast(msg);
     }
 
