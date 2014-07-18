@@ -31,7 +31,8 @@
     <string name="rootalert_text">Your device does not have root access! TTL Editor will not function on your device.</string>
     <string name="iptables_text">Your devices does not have a working \"iptables\" binary. TTL Editor will not function on your device.</string>
     <string name="no_root_access">TTL Editor was not granted root access!</string>
-    <string name="iptables_cmdline" translatable="false" tools:ignore="TypographyDashes">iptables -t mangle -A POSTROUTING -i %1$s -j TTL --ttl-set %2$s</string> <string name="ttl_success">TTL update succeeded!</string>
+    <string name="iptables_cmdline" translatable="false" tools:ignore="TypographyDashes">iptables -t mangle -A POSTROUTING -o %1$s -j TTL --ttl-set %2$s</string>
+    <string name="ttl_success">TTL update succeeded!</string>
     <string name="ttl_failure">TTL update failed!</string>
 
     <plurals name="iface_count">

@@ -38,6 +38,7 @@ public class TTLEditor extends Activity {
     private TextView ipText;
     private Enumeration<NetworkInterface> ifaces;
     private Resources res;
+    private String dbgmsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,6 +231,8 @@ public class TTLEditor extends Activity {
             }
         });
     }
+
+
 
     protected void enumerateNetworkInterfaces() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
