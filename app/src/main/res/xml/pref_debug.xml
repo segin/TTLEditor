@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="debug"
+        android:title="@string/pref_title_debug"
+        android:summary="@string/pref_description_debug"
+        android:defaultValue="true" />
+
+</PreferenceScreen>
