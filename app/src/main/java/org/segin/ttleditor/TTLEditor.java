@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +78,7 @@ public class TTLEditor extends Activity {
             e.printStackTrace();
         }
 
+        debugInit();
         enumerateNetworkInterfaces();
         makeButtonDoStuff();
         makeSpinnerDoStuff();
@@ -87,7 +89,7 @@ public class TTLEditor extends Activity {
         Toast.makeText(TTLEditor.this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    protected void makeButtonDoStuff() {
+    private void makeButtonDoStuff() {
         if (btnSubmit == null) btnSubmit = (Button) findViewById(R.id.button);
         btnSubmit.setOnClickListener(new OnClickListener() {
             @Override
@@ -97,7 +99,7 @@ public class TTLEditor extends Activity {
         });
     }
 
-    protected void validateTTL() {
+    private void validateTTL() {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         int ttl = Integer.parseInt(newttl.getText().toString());
         String msg = null;
@@ -112,7 +114,7 @@ public class TTLEditor extends Activity {
             doToast(msg);
     }
 
-    protected void changeTTL() {
+    private void changeTTL() {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         String ttl = newttl.getText().toString();
         if (RootTools.isAccessGiven()) {
@@ -140,7 +142,7 @@ public class TTLEditor extends Activity {
 
     }
 
-    protected void buildDialog() {
+    private void buildDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
         alertDialogBuilder.setTitle(getString(R.string.dialog_name));
         alertDialogBuilder
@@ -160,7 +162,7 @@ public class TTLEditor extends Activity {
         alertDialog.show();
     }
 
-    protected void buildAboutDialog() {
+    private void buildAboutDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
         alertDialogBuilder.setTitle(getString(R.string.about_name));
         alertDialogBuilder
@@ -175,7 +177,7 @@ public class TTLEditor extends Activity {
         alertDialog.show();
     }
 
-    protected void buildOfferBusyBoxDialog() {
+    private void buildOfferBusyBoxDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);
         alertDialogBuilder.setTitle(getString(R.string.offer_name));
         alertDialogBuilder
@@ -195,7 +197,7 @@ public class TTLEditor extends Activity {
         alertDialog.show();
     }
 
-    protected void updateIPAddress() {
+    private void updateIPAddress() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         if (ipText == null) ipText = (TextView) findViewById(R.id.ipText);
         NetworkInterface iface;
@@ -218,7 +220,7 @@ public class TTLEditor extends Activity {
         }
     }
 
-    protected void makeSpinnerDoStuff() {
+    private void makeSpinnerDoStuff() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -233,15 +235,24 @@ public class TTLEditor extends Activity {
         });
     }
 
-
-
-    protected void enumerateNetworkInterfaces() {
-        if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
+    protected void debugInit() {
+        if (dbgmsg == null)
+            dbgmsg = res.getString(R.string.debug_help);
         if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
-        List<String> ifnames = new ArrayList<String>();
-        String dbg = res.getString(R.string.debug_help);
-        debugText.setText(dbg);
+        debugText.setText(dbgmsg);
         debugText.setMovementMethod(new ScrollingMovementMethod());
+    }
+
+    private void debug(String msg) {
+
+
+
+    }
+
+
+    private void enumerateNetworkInterfaces() {
+        if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
+        List<String> ifnames = new ArrayList<String>();
         try {
             for(ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
@@ -249,21 +260,18 @@ public class TTLEditor extends Activity {
                 NetworkInterface i = ifaces.nextElement();
                 ifnames.add(i.getDisplayName());
                 Log.i("network_interfaces", "Interface found: " + i.getDisplayName());
-                dbg += String.format(res.getString(R.string.if_found), i.getDisplayName());
+                debug(String.format(res.getString(R.string.if_found), i.getDisplayName()));
             }
         } catch (SocketException e) {
             ifnames.add(getString(R.string.none));
-            dbg += "Couldn't find interfaces! (Permissions issue?)\n";
-            debugText.setText(dbg, TextView.BufferType.NORMAL);
+            debug("Couldn't find interfaces! (Permissions issue?)\n");
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
         } catch (NullPointerException e) {
             Log.e("TTLEditor", "NullPointerException occurred?", e);
             doToast("wtf? " + e.toString());
-            dbg += "NullPointerException occurred!";
-            debugText.setText(dbg, TextView.BufferType.NORMAL);
+            debug("NullPointerException occurred!");
         }
-        dbg += res.getQuantityString(R.plurals.iface_count, ifnames.size(), ifnames.size());
-        debugText.setText(dbg);
+        debug(res.getQuantityString(R.plurals.iface_count, ifnames.size(), ifnames.size()));
         if (ifnames.size() == 0) ifnames.add(getString(R.string.none));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, ifnames);

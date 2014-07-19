@@ -23,6 +23,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.segin.ttleditor.TTLEditor" />
         </activity>
+        <service android:name=".BootService" />
+        <receiver android:name=".BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED">
+                </action>
+            </intent-filter>
+        </receiver>
     </application>
 
     <uses-sdk
