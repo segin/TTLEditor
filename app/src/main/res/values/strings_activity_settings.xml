@@ -15,6 +15,11 @@
     <string name="pref_title_ttl">TTL</string>
     <string name="pref_default_ttl">64</string>
 
+    <string name="pref_header_share">Share</string>
+
+    <string name="pref_title_share">Share TTL Editor</string>
+    <string name="pref_description_share"></string>
+
     <!-- Debugging settings -->
     <string name="pref_header_debug">Debugging</string>
     <string name="pref_header_summ_debug">Settings related to debugging</string>

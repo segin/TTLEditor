@@ -29,13 +29,18 @@
         android:singleLine="true"
         android:maxLines="1" />
 
-    <PreferenceCategory android:title="Share" >
+    <PreferenceCategory android:title="@string/pref_header_share" >
         <PreferenceScreen
-            android:title="Twitter"
-            android:summary="Follow me at Twitter">
+            android:title="@string/pref_title_share"
+            android:summary="@string/pref_description_share">
 
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://twitter.com/" />
+            <!-- android:data="https://play.google.com/store/apps/details?id=org.segin.ttleditor"
+            <intent android:action="android.intent.action.SEND"
+
+                android:mimeType="text/plain">
+                <extra android:name="EXTRA_SUBJECT" android:value="Check out TTL Editor!" />
+                <extra android:name="EXTRA_TEXT" android:value="Check out TTL Editor! https://play.google.com/store/apps/details?id=org.segin.ttleditor" />
+            </intent> -->
 
         </PreferenceScreen>
     </PreferenceCategory>
