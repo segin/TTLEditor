@@ -41,7 +41,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/accept_btn"
+        android:text="@android:string/ok"
         android:layout_alignTop="@+id/ttlValue"
         android:layout_alignRight="@+id/helpText"
         android:layout_alignEnd="@+id/helpText"
