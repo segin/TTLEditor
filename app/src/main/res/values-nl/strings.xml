@@ -7,12 +7,11 @@
     <string name="ttl_editor_help">Deze applicatie is geschikt voor het omzeilen van provider opgelegde beperkingen op mobiel internet tethering. Het laat u toe een netwerk interface in te stellen zo dat alle vertrekkende pakketten op die interface de zelfde TTL (time-to-live) waarde hebben. Dit kan genoeg zijn om uw provider\'s tethering detectie systeem te vermijden.\n\nNieuwe TTL:</string>
     <string name="ifname_help">Interface-naam?</string>
     <string name="desc_ttl">TTL</string>
+    <string name="debug_help">Debug: \n</string>
     <string name="desc_iface">Netwerk interface</string>
     <string name="ip_help">IP-adres(sen):\n</string>
     <string name="dialog_name">bevestig</string>
     <string name="dialog_text">Bent u zeker dat u de TTL van de geselecteerde interface wilt aanpassen?</string>
-    <string name="dialog_yes">Ja</string>
-    <string name="dialog_no">Neen</string>
     <string name="no_address">Deze interface heeft geen IP adressen.</string>
     <string name="no_iface_access">Geen toegang tot interface-informatie (SocketError).</string>
     <string name="none">Geen</string>
@@ -21,6 +20,14 @@
     <string name="ttl_low">TTL te laag: %s</string>
     <string name="ttl_high">TTL te hoog: %s</string>
     <string name="about_name">Over TTL Editor</string>
+    <string name="offer_name">Installeren BusyBox?</string>
+    <string name="offer_text">TTLEditor requires BusyBox, either distributed as part of your ROM or from the installer app on Google Play on any rooted device.\n\nWould you like to install BusyBox from Google Play now?</string>
+    <string name="rootalert_name">Error</string>
+    <string name="rootalert_text">Your device does not have root access! TTL Editor will not function on your device.</string>
+    <string name="iptables_text">Your devices does not have a working \"iptables\" binary. TTL Editor will not function on your device.</string>
+    <string name="no_root_access">TTL Editor was not granted root access!</string>
+    <string name="ttl_success">TTL update succeeded!</string>
+    <string name="ttl_failure">TTL update failed!</string>
 
     <plurals name="iface_count">
         <item quantity="one">1 netwerk interface gevonden.</item>

@@ -6,7 +6,6 @@
     <string name="action_about">About</string>
     <string name="ttl_editor_help">This application is useful for circumventing carrier-imposed restrictions on tethering/mobile hotspot mode. It enables you to configure a network interface so that all packets leaving via that interface will have the same TTL (time-to-live) value, which may or may not be enough to defeat your carrier\'s tethering detection system.\n\nSet new TTL:</string>
     <string name="default_ttl" translatable="false">64</string>
-    <string name="accept_btn">OK</string>
     <string name="ifname_help">Interface name?</string>
     <string name="debug_help">Debug: \n</string>
     <string name="desc_ttl">TTL</string>
@@ -14,8 +13,6 @@
     <string name="ip_help">IP Address(es):\n</string>
     <string name="dialog_name">Confirm</string>
     <string name="dialog_text">Are you sure you want to modify TTL on selected interface?</string>
-    <string name="dialog_yes">Yes</string>
-    <string name="dialog_no">No</string>
     <string name="no_address">Interface has no IP addresses.</string>
     <string name="no_iface_access">Unable to access interface information (SocketError).</string>
     <string name="none">none</string>

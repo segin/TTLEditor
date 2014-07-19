@@ -3,6 +3,7 @@ package org.segin.ttleditor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -57,7 +58,7 @@ public class TTLEditor extends Activity {
             alertDialogBuilder
                     .setMessage(getString(R.string.rootalert_text))
                     .setCancelable(true)
-                    .setNegativeButton(getString(R.string.accept_btn), new DialogInterface.OnClickListener() {
+                    .setNegativeButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try {
                                 TTLEditor.this.finalize();
@@ -145,12 +146,12 @@ public class TTLEditor extends Activity {
         alertDialogBuilder
                 .setMessage(getString(R.string.dialog_text))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.dialog_yes),new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(android.R.string.yes),new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         changeTTL();
                     }
                 })
-                .setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(android.R.string.no), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -165,7 +166,7 @@ public class TTLEditor extends Activity {
         alertDialogBuilder
                 .setMessage(getString(R.string.about_text))
                 .setCancelable(true)
-                .setNegativeButton(getString(R.string.accept_btn), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -180,12 +181,12 @@ public class TTLEditor extends Activity {
         alertDialogBuilder
                 .setMessage(getString(R.string.offer_name))
                 .setCancelable(false)
-                .setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(android.R.string.yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         RootTools.offerBusyBox(TTLEditor.this);
                     }
                 })
-                .setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(android.R.string.no), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -284,6 +285,8 @@ public class TTLEditor extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         /* if (id == R.id.action_settings) {
+            Intent i = new Intent(TTLEditor.this, SettingsActivity.class);
+            TTLEditor.this.startActivity(i);
             return true;
         } */
         if (id == R.id.action_about) {
