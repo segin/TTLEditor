@@ -4,6 +4,7 @@
 
     <!-- General settings -->
     <string name="pref_header_general">General</string>
+    <string name="pref_header_summ_general">General settings for TTL Editor</string>
 
     <string name="pref_title_onboot">Enable on boot (placeholder)</string>
     <string name="pref_description_onboot">Runs TTL Editor at boot time. This option presently does nothing.</string>
@@ -16,6 +17,8 @@
 
     <!-- Debugging settings -->
     <string name="pref_header_debug">Debugging</string>
+    <string name="pref_header_summ_debug">Settings related to debugging</string>
+
 
     <string name="pref_title_debug">Enable debugging (placeholder)</string>
     <string name="pref_description_debug">Shows debug messages at the bottom of the screen. This option presently does nothing.</string>
