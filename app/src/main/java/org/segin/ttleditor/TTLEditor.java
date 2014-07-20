@@ -2,6 +2,7 @@ package org.segin.ttleditor;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -85,8 +86,8 @@ public class TTLEditor extends Activity {
 
     }
 
-    private void doToast(String msg) {
-        Toast.makeText(TTLEditor.this, msg, Toast.LENGTH_SHORT).show();
+    public static void doToast(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void makeButtonDoStuff() {
@@ -111,23 +112,22 @@ public class TTLEditor extends Activity {
         if (msg == null)
             buildDialog();
         else
-            doToast(msg);
+            doToast(TTLEditor.this, msg);
     }
 
-    private void changeTTL() {
-        EditText newttl = (EditText) findViewById(R.id.ttlValue);
-        String ttl = newttl.getText().toString();
+    public static void changeTTL(Context context, String iface, String ttl) {
+        Resources res = context.getResources();
         if (RootTools.isAccessGiven()) {
-            String cmdLine = String.format(getString(R.string.iptables_cmdline),
-                    spinner.getSelectedItem().toString(), newttl.getText().toString());
+            String cmdLine = String.format(res.getString(R.string.iptables_cmdline),
+                    iface, ttl);
             Process exec = null;
             try {
                 exec = Runtime.getRuntime().exec(new String[]{"su", "-c", cmdLine});
                 exec.waitFor();
                 if (exec.exitValue() != 0)
-                    doToast(getString(R.string.ttl_failure));
+                    doToast(context, res.getString(R.string.ttl_failure));
                 else
-                    doToast(getString(R.string.ttl_success));
+                    doToast(context, res.getString(R.string.ttl_success));
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.e("TLLEditor", "iptables failed.", e);
@@ -138,8 +138,13 @@ public class TTLEditor extends Activity {
                 if (exec != null) exec.destroy();
             }
         } else
-            doToast(getString(R.string.no_root_access));
+            doToast(context, getString(R.string.no_root_access));
+    }
 
+    private void changeTTL() {
+        EditText newttl = (EditText) findViewById(R.id.ttlValue);
+        String ttl = newttl.getText().toString();
+        changeTTL(TTLEditor.this, spinner.getSelectedItem().toString(), ttl);
     }
 
     private void buildDialog() {
@@ -244,11 +249,9 @@ public class TTLEditor extends Activity {
     }
 
     private void debug(String msg) {
-
-
-
+        dbgmsg.concat(msg);
+        debugText.setText(dbgmsg);
     }
-
 
     private void enumerateNetworkInterfaces() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
@@ -268,7 +271,7 @@ public class TTLEditor extends Activity {
             Log.e("network_interfaces", "SocketException occurred getting names!", e);
         } catch (NullPointerException e) {
             Log.e("TTLEditor", "NullPointerException occurred?", e);
-            doToast("wtf? " + e.toString());
+            doToast(TTLEditor.this, "wtf? " + e.toString());
             debug("NullPointerException occurred!");
         }
         debug(res.getQuantityString(R.plurals.iface_count, ifnames.size(), ifnames.size()));

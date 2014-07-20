@@ -2,6 +2,8 @@ package org.segin.ttleditor;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 /**
  * Created by Kirn on 7/19/14.
@@ -13,14 +15,12 @@ public class BootService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        long endTime = System.currentTimeMillis() + 5*1000;
-        while (System.currentTimeMillis() < endTime) {
-            synchronized (this) {
-                try {
-                    wait(endTime - System.currentTimeMillis());
-                } catch (Exception e) {
-                }
-            }
+        SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
+        if(myPreference.getBoolean("onboot", false)) {
+            String iface = myPreference.getString("iface", "rmnet_sdio0");
+            int ttl = myPreference.getInt("ttl",64);
+
         }
+
     }
 }
