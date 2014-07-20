@@ -31,6 +31,8 @@
     <string name="iptables_cmdline" translatable="false" tools:ignore="TypographyDashes">iptables -t mangle -A POSTROUTING -o %1$s -j TTL --ttl-set %2$s</string>
     <string name="ttl_success">TTL update succeeded!</string>
     <string name="ttl_failure">TTL update failed!</string>
+    <string name="share_subject">Check out TTL Editor!</string>
+    <string name="share_text">Check out TTL Editor! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
 
     <plurals name="iface_count">
         <item quantity="one">Found 1 network interface.</item>
