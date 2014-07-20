@@ -21,6 +21,5 @@ public class BootService extends IntentService {
             int ttl = myPreference.getInt("ttl",64);
             TTLEditor.changeTTL(this.getApplicationContext(), iface, Integer.toString(ttl));
         }
-
     }
 }
