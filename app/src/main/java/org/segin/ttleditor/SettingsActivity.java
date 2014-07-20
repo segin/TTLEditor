@@ -60,6 +60,7 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected boolean isValidFragment (String fragmentName) {
         if(SettingsActivity.class.getName().equals(fragmentName))
@@ -232,7 +233,7 @@ public class SettingsActivity extends PreferenceActivity {
      * This fragment shows notification preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    // @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class DebuggingPreferenceFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
