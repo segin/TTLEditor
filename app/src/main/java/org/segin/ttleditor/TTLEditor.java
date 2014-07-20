@@ -138,7 +138,7 @@ public class TTLEditor extends Activity {
                 if (exec != null) exec.destroy();
             }
         } else
-            doToast(context, getString(R.string.no_root_access));
+            doToast(context, res.getString(R.string.no_root_access));
     }
 
     private void changeTTL() {
