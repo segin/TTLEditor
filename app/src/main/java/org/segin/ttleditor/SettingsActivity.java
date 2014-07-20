@@ -96,8 +96,11 @@ public class SettingsActivity extends PreferenceActivity {
             return;
         }
         ActionBar actionBar = getActionBar();
-        actionBar.setIcon(getResources().getDrawable(R.drawable.ic_settings));
-
+        try {
+            actionBar.setIcon(getResources().getDrawable(R.drawable.ic_settings))
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
 
