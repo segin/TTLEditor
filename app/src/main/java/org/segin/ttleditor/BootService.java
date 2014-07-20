@@ -19,7 +19,7 @@ public class BootService extends IntentService {
         if(myPreference.getBoolean("onboot", false)) {
             String iface = myPreference.getString("iface", "rmnet_sdio0");
             int ttl = myPreference.getInt("ttl",64);
-
+            TTLEditor.changeTTL(this.getApplicationContext(), iface, Integer.toString(ttl));
         }
 
     }
