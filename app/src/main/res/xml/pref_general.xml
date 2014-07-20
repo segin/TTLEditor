@@ -29,7 +29,7 @@
         android:singleLine="true"
         android:maxLines="1" />
 
-    <PreferenceCategory android:title="@string/pref_header_share" >
+    <PreferenceCategory android:title="@string/pref_header_share" android:icon="@android:drawable/ic_menu_share">
         <PreferenceScreen
             android:title="@string/pref_title_share"
             android:summary="@string/pref_description_share"

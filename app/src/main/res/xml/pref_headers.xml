@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header
+        android:icon="@drawable/ic_settings"
         android:fragment="org.segin.ttleditor.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general"
         android:summary="@string/pref_header_summ_general" />
     <header
+        android:icon="@android:drawable/ic_menu_view"
         android:fragment="org.segin.ttleditor.SettingsActivity$DebuggingPreferenceFragment"
         android:title="@string/pref_header_debug"
         android:summary="@string/pref_header_summ_debug" />

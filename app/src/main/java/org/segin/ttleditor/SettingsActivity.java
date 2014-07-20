@@ -1,6 +1,7 @@
 package org.segin.ttleditor;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -94,6 +95,8 @@ public class SettingsActivity extends PreferenceActivity {
         if (!isSimplePreferences(this)) {
             return;
         }
+        ActionBar actionBar = getActionBar();
+        actionBar.setIcon(getResources().getDrawable(R.drawable.ic_settings));
 
         // In the simplified UI, fragments are not used at all and we instead
         // use the older PreferenceActivity APIs.
