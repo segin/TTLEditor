@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings related to Settings -->
+
+    <!-- General settings -->
+    <string name="pref_header_general">Algemeen</string>
+    <string name="pref_header_summ_general">Algemene instellingen voor TTL Editor</string>
+
+    <string name="pref_title_onboot">Inschakelen bij opstarten (placeholder)</string>
+    <string name="pref_description_onboot">start TTL Editor bij opstarten. Deze optie doet momenteel niks.</string>
+
+    <string name="pref_title_iface">Netwerkinterface</string>
+    <string name="pref_default_iface">rmnet_sdio0</string>
+
+    <string name="pref_title_ttl">TTL</string>
+    <string name="pref_default_ttl">64</string>
+
+    <string name="pref_header_share">Delen</string>
+
+    <string name="pref_title_share">Deel TTL Editor</string>
+    <string name="pref_description_share"></string>
+
+    <string name="pref_title_rate">Beoordeel op Google Play!</string>
+
+    <!-- Debugging settings -->
+    <string name="pref_header_debug">Debugging</string>
+    <string name="pref_header_summ_debug">Debugging Instellingen</string>
+
+
+    <string name="pref_title_debug">Debugging Inschakelen (placeholder)</string>
+    <string name="pref_description_debug">Toont debug-berichten onder aan het scherm. Deze optie doet momenteel niks.</string>
+
+</resources>

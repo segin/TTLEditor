@@ -8,7 +8,7 @@
     <string name="ifname_help">Interface-naam?</string>
     <string name="desc_ttl">TTL</string>
     <string name="debug_help">Debug: \n</string>
-    <string name="desc_iface">Netwerk interface</string>
+    <string name="desc_iface">Netwerkinterface</string>
     <string name="ip_help">IP-adres(sen):\n</string>
     <string name="dialog_name">bevestig</string>
     <string name="dialog_text">Bent u zeker dat u de TTL van de geselecteerde interface wilt aanpassen?</string>
@@ -20,18 +20,18 @@
     <string name="ttl_low">TTL te laag: %s</string>
     <string name="ttl_high">TTL te hoog: %s</string>
     <string name="about_name">Over TTL Editor</string>
-    <string name="offer_name">Installeren BusyBox?</string>
-    <string name="offer_text">TTLEditor requires BusyBox, either distributed as part of your ROM or from the installer app on Google Play on any rooted device.\n\nWould you like to install BusyBox from Google Play now?</string>
-    <string name="rootalert_name">Error</string>
-    <string name="rootalert_text">Your device does not have root access! TTL Editor will not function on your device.</string>
-    <string name="iptables_text">Your devices does not have a working \"iptables\" binary. TTL Editor will not function on your device.</string>
-    <string name="no_root_access">TTL Editor was not granted root access!</string>
-    <string name="ttl_success">TTL update succeeded!</string>
-    <string name="ttl_failure">TTL update failed!</string>
+    <string name="offer_name">BusyBox Installeren?</string>
+    <string name="offer_text">TTLEditor vereist BusyBox, ofwel als onderdeel van uw ROM of van de installatie app op Google Play op elk geroot toestel.\n\nWenst u BusyBox nu via Google Play te installeren?</string>
+    <string name="rootalert_name">Fout</string>
+    <string name="rootalert_text">Uw toestel heeft geen root-toegang! TTL Editor zal niet werken op uw toestel.</string>
+    <string name="iptables_text">Uw toestel heeft geen werkende \"iptables\" binary. TTL Editor zal niet werken op uw toestel.</string>
+    <string name="no_root_access">TTL Editor was geen root-toegang verleent!</string>
+    <string name="ttl_success">TTL updaten succesvol!</string>
+    <string name="ttl_failure">TTL updaten mislukte!</string>
 
     <plurals name="iface_count">
-        <item quantity="one">1 netwerk interface gevonden.</item>
-        <item quantity="other">%d netwerk interfaces gevonden.</item>
+        <item quantity="one">1 netwerkinterface gevonden.</item>
+        <item quantity="other">%d netwerkinterfaces gevonden.</item>
     </plurals>
     <plurals name="ip_count">
         <item quantity="zero">Interface heeft geen IP adressen. \n</item>
