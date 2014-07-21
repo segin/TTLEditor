@@ -18,8 +18,8 @@ public class BootService extends IntentService {
         SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
         if(myPreference.getBoolean("onboot", false)) {
             String iface = myPreference.getString("iface", "rmnet_sdio0");
-            int ttl = myPreference.getInt("ttl",64);
-            TTLEditor.changeTTL(this.getApplicationContext(), iface, Integer.toString(ttl));
+            String ttl = myPreference.getString("ttl", "64");
+            TTLEditor.changeTTL(this.getApplicationContext(), iface, ttl);
         }
     }
 }
