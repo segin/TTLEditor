@@ -15,7 +15,7 @@ public class BootService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SharedPreferences myPreference= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences myPreference = PreferenceManager.getDefaultSharedPreferences(this);
         if(myPreference.getBoolean("onboot", false)) {
             String iface = myPreference.getString("iface", "rmnet_sdio0");
             String ttl = myPreference.getString("ttl", "64");

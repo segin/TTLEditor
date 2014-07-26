@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -244,7 +245,13 @@ public class TTLEditor extends Activity {
         if (dbgmsg == null)
             dbgmsg = res.getString(R.string.debug_help);
         if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         debugText.setText(dbgmsg);
+        if (prefs.getBoolean("debug", true)) {
+            debugText.setVisibility(View.VISIBLE);
+        } else {
+            debugText.setVisibility(View.GONE);
+        }
         debugText.setMovementMethod(new ScrollingMovementMethod());
     }
 

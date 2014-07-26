@@ -66,7 +66,7 @@ public class SettingsActivity extends PreferenceActivity {
     protected boolean isValidFragment (String fragmentName) {
         if(SettingsActivity.class.getName().equals(fragmentName))
             return true;
-        return false;
+        return true;
     }
 
     @Override
@@ -230,9 +230,7 @@ public class SettingsActivity extends PreferenceActivity {
                     return true;
                 }
             });
-
         }
-
     }
 
     /**

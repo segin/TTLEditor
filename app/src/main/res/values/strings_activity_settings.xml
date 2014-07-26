@@ -6,7 +6,7 @@
     <string name="pref_header_general">General</string>
     <string name="pref_header_summ_general">General settings for TTL Editor</string>
 
-    <string name="pref_title_onboot">Enable on boot (placeholder)</string>
+    <string name="pref_title_onboot">Enable on boot</string>
     <string name="pref_description_onboot">Runs TTL Editor at boot time. This option presently does nothing.</string>
 
     <string name="pref_title_iface">Network interface</string>
@@ -15,10 +15,11 @@
     <string name="pref_title_ttl">TTL</string>
     <string name="pref_default_ttl">64</string>
 
+    <!-- Sharing -->
     <string name="pref_header_share">Share</string>
 
     <string name="pref_title_share">Share TTL Editor</string>
-    <string name="pref_description_share"></string>
+    <string name="pref_description_share">Share a link via email or social media</string>
 
     <string name="pref_title_rate">Rate on Google Play!</string>
 
