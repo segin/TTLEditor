@@ -41,7 +41,8 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".TTLEditor" >
+            android:parentActivityName=".TTLEditor"
+            tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.segin.ttleditor.TTLEditor" />
