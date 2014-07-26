@@ -36,6 +36,10 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
