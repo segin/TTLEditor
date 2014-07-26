@@ -6,7 +6,7 @@
     <string name="pref_header_general">Algemeen</string>
     <string name="pref_header_summ_general">Algemene instellingen voor TTL Editor</string>
 
-    <string name="pref_title_onboot">Inschakelen bij opstarten (placeholder)</string>
+    <string name="pref_title_onboot">Inschakelen bij opstarten</string>
     <string name="pref_description_onboot">start TTL Editor bij opstarten. Deze optie doet momenteel niks.</string>
 
     <string name="pref_title_iface">Netwerkinterface</string>
@@ -15,10 +15,11 @@
     <string name="pref_title_ttl">TTL</string>
     <string name="pref_default_ttl">64</string>
 
+    <!-- Sharing -->
     <string name="pref_header_share">Delen</string>
 
     <string name="pref_title_share">Deel TTL Editor</string>
-    <string name="pref_description_share"></string>
+    <string name="pref_description_share">Deel TTL Editor op social media of e-mail</string>
 
     <string name="pref_title_rate">Beoordeel op Google Play!</string>
 
