@@ -40,7 +40,6 @@ public class TTLEditor extends Activity {
     private Button btnSubmit;
     private TextView debugText;
     private TextView ipText;
-    private Enumeration<NetworkInterface> ifaces;
     private Resources res;
     private String dbgmsg;
 
@@ -85,6 +84,12 @@ public class TTLEditor extends Activity {
         makeButtonDoStuff();
         makeSpinnerDoStuff();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        debugInit();
     }
 
     public static void doToast(Context context, String msg) {
@@ -244,7 +249,8 @@ public class TTLEditor extends Activity {
     protected void debugInit() {
         if (dbgmsg == null)
             dbgmsg = res.getString(R.string.debug_help);
-        if (debugText == null) debugText = (TextView) findViewById(R.id.debugText);
+        if (debugText == null)
+            debugText = (TextView) findViewById(R.id.debugText);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         debugText.setText(dbgmsg);
         if (prefs.getBoolean("debug", true)) {
@@ -255,8 +261,9 @@ public class TTLEditor extends Activity {
         debugText.setMovementMethod(new ScrollingMovementMethod());
     }
 
+
     private void debug(String msg) {
-        dbgmsg.concat(msg);
+        dbgmsg = dbgmsg.concat(msg);
         debugText.setText(dbgmsg);
     }
 
@@ -264,6 +271,7 @@ public class TTLEditor extends Activity {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
         List<String> ifnames = new ArrayList<String>();
         try {
+            Enumeration<NetworkInterface> ifaces;
             for(ifaces = NetworkInterface.getNetworkInterfaces();
                 ifaces.hasMoreElements();)
             {

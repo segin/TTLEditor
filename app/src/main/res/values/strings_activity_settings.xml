@@ -22,6 +22,7 @@
     <string name="pref_description_share">Share a link via email or social media</string>
 
     <string name="pref_title_rate">Rate on Google Play!</string>
+    <string name="pref_description_rate">View TTL Editor on Google Play and give it a rating</string>
 
     <!-- Debugging settings -->
     <string name="pref_header_debug">Debugging</string>
