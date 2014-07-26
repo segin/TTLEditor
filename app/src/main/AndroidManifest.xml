@@ -2,6 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.segin.ttleditor" >
 
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:resizeable="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -31,18 +52,4 @@
             </intent-filter>
         </receiver>
     </application>
-
-    <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="19" />
-
-    <uses-feature
-        android:name="android.hardware.faketouch"
-        android:required="false" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
 </manifest>
