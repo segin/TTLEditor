@@ -28,6 +28,8 @@
     <string name="no_root_access">TTL Editor was geen root-toegang verleent!</string>
     <string name="ttl_success">TTL updaten succesvol!</string>
     <string name="ttl_failure">TTL updaten mislukte!</string>
+    <string name="share_subject">Check out TTL Editor!</string>
+    <string name="share_text">Check out TTL Editor! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
 
     <plurals name="iface_count">
         <item quantity="one">1 netwerkinterface gevonden.</item>
