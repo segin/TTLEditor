@@ -6,7 +6,7 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19"
-        tools:ignore="OldTargetApi" />
+        tools:ignore="GradleOverrides,OldTargetApi" />
 
     <uses-feature
         android:name="android.hardware.faketouch"
