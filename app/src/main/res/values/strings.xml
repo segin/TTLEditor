@@ -21,7 +21,7 @@
     <string name="ttl_low">TTL too low: %s</string>
     <string name="ttl_high">TTL too high: %s</string>
     <string name="about_name">About TTL Editor</string>
-    <string name="about_text" translatable="false">Copyright © 2014 Kirn Gill &lt;segin2005@gmail.com&gt;.\n\nAdditional thanks to:\n\nMattis Michel: Advice, API help\nDaniel Strand (m4dh4x0r): Debugging, testing\nRaj Rajan: Testing, app icon\nElvis Mongaré: Testing, Dutch translation</string>
+    <string name="about_text" translatable="false">Copyright © 2014 Kirn Gill &lt;segin2005@gmail.com&gt;.\n\nAdditional thanks to:\n\nMattis Michel: Advice, API help\nDaniel Strand (m4dh4x0r): Debugging, testing\nRaj Rajan: Testing, app icon\nElvis Mongaré: Testing, Dutch translation\nIoann Volkov: Russian translation</string>
     <string name="offer_name">Install BusyBox?</string>
     <string name="offer_text">TTLEditor requires BusyBox, either distributed as part of your ROM or from the installer app on Google Play on any rooted device.\n\nWould you like to install BusyBox from Google Play now?</string>
     <string name="rootalert_name">Error</string>
