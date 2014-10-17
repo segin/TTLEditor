@@ -10,7 +10,7 @@
     <string name="pref_description_onboot">Runs TTL Editor at boot time.</string>
 
     <string name="pref_title_iface">Network interface</string>
-    <string name="pref_default_iface">rmnet_sdio0</string>
+    <string name="pref_default_iface" translatable="false">rmnet_sdio0</string>
 
     <string name="pref_title_ttl">TTL</string>
     <string name="pref_default_ttl">64</string>
