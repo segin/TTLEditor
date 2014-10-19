@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
@@ -48,3 +49,49 @@
     </plurals>
 
 </resources>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">Редактор TTL</string>
+    <string name="action_settings">Настройки</string>
+    <string name="action_about">О программе</string>
+    <string name="ttl_editor_help">Эта программа полезна для обхода запрета раздачи интернета с телефона, который делают некоторые провайдеры. Она позволяет настроить сетевой интерфейс таким образом, чтобы все пакеты исходящие с него имели заданное значение TTL (time-to-live), и этого может хватить (а может и не хватить) для маскировки пакетов, идущих в режиме роутера, под пакеты, отправляемые самим телефоном/планшетом.\n\nЗадать значение TTL:</string>
+    <string name="ifname_help">Имя интерфейса?</string>
+    <string name="debug_help">Отладка: \n</string>
+    <string name="desc_ttl">TTL</string>
+    <string name="desc_iface">Сетевой интерфейс</string>
+    <string name="ip_help">IP адрес(а):\n</string>
+    <string name="dialog_name">Подтверждение</string>
+    <string name="dialog_text">Вы уверены, что хотите задать TTL на указанном интерфейсе?</string>
+    <string name="no_address">На интерфейсе нет IP адресов.</string>
+    <string name="no_iface_access">Не удалось получить информацию о сетевом интерфейсе (SocketError).</string>
+    <string name="none">отсутствуют</string>
+    <string name="if_found">Найдены интерфейсы: %s\n</string>
+    <string name="pressed">нажата кнопка</string>
+    <string name="ttl_low">Слишком маленькое значение TTL: %s</string>
+    <string name="ttl_high">Слишком большое значение TTL: %s</string>
+    <string name="about_name">О программе Редактор TTL</string>
+    <string name="offer_name">Установить BusyBox?</string>
+    <string name="offer_text">Редактору TTL необходим BusyBox. Если его нет изначально в Вашей системе, то можете поставить установщик BusyBox с Google Play.\n\nВы хотите установить BusyBox с Google Play прямо сейчас?</string>
+    <string name="rootalert_name">Ошибка</string>
+    <string name="rootalert_text">Недоступны root-права! Редактор TTL не сможет работать на Вашем устройстве.</string>
+    <string name="iptables_text">Отсутствует (или не работает) исполняемый файл \"iptables\". Редактор TTL не сможет работать на Вашем устройстве.</string>
+    <string name="no_root_access">Редактор TTL не получил root-права!</string>
+    <string name="ttl_success">Значение TTL успешно задано!</string>
+    <string name="ttl_failure">Не удалось задать значение TTL!</string>
+    <string name="share_subject">Редактор TTL на Play Market!</string>
+    <string name="share_text">Переход к Редактору TTL на Google Play! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
+
+    <plurals name="iface_count">
+        <item quantity="one">Найден 1 сетевой интерфейс.</item>
+        <item quantity="other">Найдено %d сетевых интерфейса/интерфейсов.</item>
+    </plurals>
+    <plurals name="ip_count">
+        <item quantity="zero">На интерфейсе нет IP адресов.\n</item>
+        <item quantity="one">Один IP адрес:\n</item>
+        <item quantity="other">%d IP адреса/адресов:\n</item>
+    </plurals>
+
+</resources>
+>>>>>>> 01fab22f1ae9530c4d3d9dd5f6a8f386d6995bff
