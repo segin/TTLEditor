@@ -6,12 +6,14 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
+        android:alphabeticShortcut="s"
         android:title="@string/action_settings"
         android:icon="@android:drawable/ic_menu_manage" />
     <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:showAsAction="never"
+        android:alphabeticShortcut="a"
         android:title="@string/action_about"
         android:icon="@android:drawable/ic_menu_info_details" />
 </menu>
