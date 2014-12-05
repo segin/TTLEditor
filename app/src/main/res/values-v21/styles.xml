@@ -4,5 +4,15 @@
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">@color/logo</item>
         <item name="android:colorPrimaryDark">@color/logoDark</item>
+        <item name="android:actionBarStyle">@style/TTLEditor.ActionBar</item>
+    </style>
+
+    <style name="TTLEditor.ActionBar" parent="android:Widget.Material.Light.ActionBar.Solid">
+        <item name="android:titleTextStyle">@style/TTLEditor.ActionBar.TitleTextStyle</item>
+        <item name="android:background">@color/logo</item>
+    </style>
+
+    <style name="TTLEditor.ActionBar.TitleTextStyle" parent="android:TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 </resources>
