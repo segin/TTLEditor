@@ -47,7 +47,7 @@
             android:key="donate" />
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X3C9LNLM3V7L4"
+                android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=X3C9LNLM3V7L4"
                 />
     </PreferenceCategory>
 
