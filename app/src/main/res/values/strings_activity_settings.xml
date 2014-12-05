@@ -25,7 +25,7 @@
     <string name="pref_description_rate">View TTL Editor on Google Play and give it a rating</string>
 
     <string name="pref_title_donate">Donate via PayPal</string>
-    <string name="pref_description_rate">Help further TTL Editor development!</string>
+    <string name="pref_description_donate">Help further TTL Editor development!</string>
 
     <!-- Debugging settings -->
     <string name="pref_header_debug">Debugging</string>
