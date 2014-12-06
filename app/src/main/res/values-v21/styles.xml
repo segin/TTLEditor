@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/logo</item>
         <item name="android:colorPrimaryDark">@color/logoDark</item>
         <item name="android:actionBarStyle">@style/TTLEditor.ActionBar</item>
