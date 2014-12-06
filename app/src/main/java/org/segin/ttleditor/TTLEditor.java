@@ -277,7 +277,6 @@ public class TTLEditor extends Activity {
         debugText.setMovementMethod(new ScrollingMovementMethod());
     }
 
-
     private void debug(String msg) {
         dbgmsg = dbgmsg.concat(msg);
         debugText.setText(dbgmsg);
