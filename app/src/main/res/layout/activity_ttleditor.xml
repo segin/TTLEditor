@@ -30,39 +30,55 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:labelFor="@+id/ttlValue"
+            android:labelFor="@+id/block"
             tools:ignore="UnusedAttribute" />
 
-        <EditText
-            android:id="@+id/ttlValue"
+        <RelativeLayout
+            android:id="@+id/block"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:text="@string/default_ttl"
-            android:clickable="false"
-            android:contentDescription="@string/desc_ttl"
             android:layout_below="@+id/helpText"
+            android:elevation="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/button" />
+            android:layout_alignParentStart="true">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/ok"
-            android:layout_alignTop="@+id/ttlValue"
-            android:layout_alignRight="@+id/helpText"
-            android:layout_alignEnd="@+id/helpText"
-            android:layout_alignBottom="@+id/ttlValue" />
+            <EditText
+                android:id="@+id/ttlValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:text="@string/default_ttl"
+                android:clickable="true"
+                android:contentDescription="@string/desc_ttl"
+                android:layout_alignTop="@+id/block"
+                android:layout_alignBottom="@+id/block"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/button"
+                android:layout_toStartOf="@+id/button" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@android:string/ok"
+                android:layout_alignBottom="@+id/ttlValue"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ifname_help"
             android:id="@+id/ifnameText"
-            android:layout_below="@+id/ttlValue"
+            android:layout_below="@+id/block"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:labelFor="@+id/if2List"
