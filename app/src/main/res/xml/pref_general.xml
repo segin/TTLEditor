@@ -36,6 +36,7 @@
             android:key="share" />
         <Preference
             android:title="@string/pref_title_rate"
+            android:summary="@string/pref_description_rate"
             android:key="info">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -43,12 +44,14 @@
                 />
         </Preference>
         <Preference
-            android:title="Donate"
-            android:key="donate" />
+            android:title="@string/pref_title_donate"
+            android:summary="@string/pref_description_donate"
+            android:key="donate">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=X3C9LNLM3V7L4"
+                android:data="@string/pref_url_donate"
                 />
+        </Preference>
     </PreferenceCategory>
 
 </PreferenceScreen>

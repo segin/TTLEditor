@@ -27,6 +27,8 @@
     <string name="pref_title_donate">Donate via PayPal</string>
     <string name="pref_description_donate">Help further TTL Editor development!</string>
 
+    <string name="pref_url_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=X3C9LNLM3V7L4</string>
+
     <!-- Debugging settings -->
     <string name="pref_header_debug">Debugging</string>
     <string name="pref_header_summ_debug">Settings related to debugging</string>
