@@ -38,8 +38,8 @@
         <item quantity="other">%d netwerkinterfaces gevonden.</item>
     </plurals>
     <plurals name="ip_count">
-        <item quantity="zero">Interface heeft geen IP adressen. \n</item>
-        <item quantity="one">Ã‰Ã©n IP adres:\n</item>
+        <item quantity="zero">Interface heeft geen IP adressen.\n</item>
+        <item quantity="one">Een IP-adres:\n</item>
         <item quantity="other">%d IP adressen:\n</item>
     </plurals>
 
