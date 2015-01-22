@@ -130,7 +130,13 @@ public class TTLEditor extends Activity {
         ifDoAll.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                spinner.setEnabled(!ifDoAll.isChecked());
+                if (ifDoAll.isChecked()) {
+                    spinner.setEnabled(false);
+                    ipText.setVisibility(View.GONE);
+                } else {
+                    spinner.setEnabled(true);
+                    ipText.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
