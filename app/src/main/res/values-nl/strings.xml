@@ -31,13 +31,15 @@
     <string name="share_subject">Check out TTL Editor!</string>
     <string name="share_text">Check out TTL Editor! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
 
+    <string name="if_do_all">Op alle netwerkinterfaces toepassen</string>
+
     <plurals name="iface_count">
         <item quantity="one">1 netwerkinterface gevonden.</item>
         <item quantity="other">%d netwerkinterfaces gevonden.</item>
     </plurals>
     <plurals name="ip_count">
-        <item quantity="zero">Interface heeft geen IP adressen. \n</item>
-        <item quantity="one">Ã‰Ã©n IP adres:\n</item>
+        <item quantity="zero">Interface heeft geen IP adressen.\n</item>
+        <item quantity="one">Een IP-adres:\n</item>
         <item quantity="other">%d IP adressen:\n</item>
     </plurals>
 

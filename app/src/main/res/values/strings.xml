@@ -34,6 +34,8 @@
     <string name="share_subject">Check out TTL Editor!</string>
     <string name="share_text">Check out TTL Editor! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
 
+    <string name="if_do_all">Apply to all network interfaces</string>
+
     <plurals name="iface_count">
         <item quantity="one">Found 1 network interface.</item>
         <item quantity="other">Found %d network interfaces.</item>

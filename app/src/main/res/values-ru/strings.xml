@@ -31,6 +31,8 @@
     <string name="share_subject">Редактор TTL на Play Market!</string>
     <string name="share_text">Переход к Редактору TTL на Google Play! https://play.google.com/store/apps/details?id=org.segin.ttleditor</string>
 
+    <string name="if_do_all">Применить ко всем сетевым интерфейсам</string>
+
     <plurals name="iface_count">
         <item quantity="one">Найден 1 сетевой интерфейс.</item>
         <item quantity="two">Найдено %d сетевых интерфейса.</item>

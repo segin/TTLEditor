@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class TTLEditor extends Activity {
     private TextView ipText;
     private Resources res;
     private String dbgmsg;
+    private CheckBox ifDoAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,7 @@ public class TTLEditor extends Activity {
         enumerateNetworkInterfaces();
         makeButtonDoStuff();
         makeSpinnerDoStuff();
+        makeCheckboxDoStuff();
 
     }
 
@@ -123,6 +126,22 @@ public class TTLEditor extends Activity {
         });
     }
 
+    private void makeCheckboxDoStuff() {
+        if (ifDoAll == null) ifDoAll = (CheckBox) findViewById(R.id.ifApplyAll);
+        ifDoAll.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ifDoAll.isChecked()) {
+                    spinner.setEnabled(false);
+                    ipText.setVisibility(View.GONE);
+                } else {
+                    spinner.setEnabled(true);
+                    ipText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
     private void validateTTL() {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         int ttl = Integer.parseInt(newttl.getText().toString());
@@ -131,7 +150,6 @@ public class TTLEditor extends Activity {
             msg = String.format(res.getString(R.string.ttl_high), newttl.getText().toString());
         else if (ttl < 1)
             msg = String.format(res.getString(R.string.ttl_low), newttl.getText().toString());
-
         if (msg == null)
             buildDialog();
         else
