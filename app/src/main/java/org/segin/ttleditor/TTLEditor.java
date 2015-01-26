@@ -39,6 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 import com.stericson.RootTools.*;
+import com.stericson.RootShell.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
