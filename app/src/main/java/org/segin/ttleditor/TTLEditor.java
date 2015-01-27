@@ -185,7 +185,15 @@ public class TTLEditor extends Activity {
     private void changeTTL() {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         String ttl = newttl.getText().toString();
-        changeTTL(TTLEditor.this, spinner.getSelectedItem().toString(), ttl);
+        if (ifDoAll.isChecked()) {
+            // Check for new interfaces first
+            enumerateNetworkInterfaces();
+            for(int i = 0; i < spinner.getCount(); i++) {
+                changeTTL(TTLEditor.this, spinner.getItemAtPosition(i).toString(), ttl);
+            }
+        } else {
+            changeTTL(TTLEditor.this, spinner.getSelectedItem().toString(), ttl);
+        }
     }
 
     private void buildDialog() {
