@@ -15,7 +15,7 @@
     <string name="dialog_text">Are you sure you want to modify TTL on selected interface?</string>
     <string name="no_address">Interface has no IP addresses.</string>
     <string name="no_iface_access">Unable to access interface information (SocketError).</string>
-    <string name="no_iface_pointer">Unable to access interface information; an unknown issue occurred. (NullPointerException).\n\nPlease do not revoke TTL Editor's permissions via App Ops!\nIf this continues to occur and you did not use App Ops, please email the developer a \"logcat\" trace.</string>
+    <string name="no_iface_pointer">Unable to access interface information; an unknown issue occurred. (NullPointerException).\n\nPlease do not revoke TTL Editor\'s permissions via App Ops!\nIf this continues to occur and you did not use App Ops, please email the developer a \"logcat\" trace.</string>
     <string name="none">none</string>
     <string name="if_found">Interface found: %s\n</string>
     <string name="pressed">button pressed</string>
