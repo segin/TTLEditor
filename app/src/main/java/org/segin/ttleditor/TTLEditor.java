@@ -263,7 +263,9 @@ public class TTLEditor extends Activity {
         } catch (SocketException e) {
             e.printStackTrace();
             ipText.setText(getString(R.string.ip_help) + getString(R.string.no_iface_access));
-        }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            ipText.setText(getString(R.string.ip_help) + getString(R.string.no_iface_pointer));
     }
 
     private void makeSpinnerDoStuff() {
