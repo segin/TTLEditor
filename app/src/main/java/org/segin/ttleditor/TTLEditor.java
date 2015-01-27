@@ -313,7 +313,7 @@ public class TTLEditor extends Activity {
 
     private void enumerateNetworkInterfaces() {
         if (spinner == null) spinner = (Spinner) findViewById(R.id.ifList);
-        List<String> ifnames = new ArrayList<String>();
+        List<String> ifnames = new ArrayList<>();
         try {
             Enumeration<NetworkInterface> ifaces;
             for(ifaces = NetworkInterface.getNetworkInterfaces();
