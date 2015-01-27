@@ -171,10 +171,10 @@ public class TTLEditor extends Activity {
                     doToast(context, res.getString(R.string.ttl_success));
             } catch (IOException e) {
                 e.printStackTrace();
-                Log.e("TLLEditor", "iptables failed.", e);
+                Log.e("TTLEditor", "iptables failed.", e);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                Log.e("TLLEditor", "iptables received signal before completing.", e);
+                Log.e("TTLEditor", "iptables received signal before completing.", e);
             } finally {
                 if (exec != null) exec.destroy();
             }
