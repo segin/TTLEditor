@@ -40,7 +40,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 import com.stericson.RootTools.*;
-import com.stericson.RootShell.*;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -82,7 +81,7 @@ public class TTLEditor extends Activity {
                     .setNegativeButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try {
-
+                                TTLEditor.this.finish();
                             } catch (Throwable e) {
                                 Log.wtf("TTLEditor", "wtf, cannot Activity.finalize()?", e);
                             }
@@ -274,6 +273,7 @@ public class TTLEditor extends Activity {
         } catch (NullPointerException e) {
             e.printStackTrace();
             ipText.setText(getString(R.string.ip_help) + getString(R.string.no_iface_pointer));
+        }
     }
 
     private void makeSpinnerDoStuff() {
