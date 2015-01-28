@@ -162,8 +162,10 @@ public class TTLEditor extends Activity {
             String ipv6_cmdLine = String.format(res.getString(R.string.iptables_ipv6_cmdline), iface, ttl);
             Process exec = null;
             try {
-                exec = Runtime.getRuntime().exec(new String[]{"su", "-c", "bash -c \"" + cmdLine + "&&" + ipv6_cmdLine + "\""});
+                exec = Runtime.getRuntime().exec(new String[]{"su", "-c", cmdLine});
+                Process ipv6_exec = Runtime.getRuntime().exec(new String[]{"su", "-c", ipv6_cmdLine});
                 exec.waitFor();
+                ipv6_exec.waitFor();
                 if (exec.exitValue() != 0)
                     doToast(context, res.getString(R.string.ttl_failure));
                 else
