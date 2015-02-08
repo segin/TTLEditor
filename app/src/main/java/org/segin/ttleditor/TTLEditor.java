@@ -187,15 +187,35 @@ public class TTLEditor extends Activity {
         EditText newttl = (EditText) findViewById(R.id.ttlValue);
         String ttl = newttl.getText().toString();
         if (ifDoAll.isChecked()) {
-            // Check for new interfaces first
+/*            // Check for new interfaces first
             enumerateNetworkInterfaces();
             for(int i = 0; i < spinner.getCount(); i++) {
                 changeTTL(TTLEditor.this, spinner.getItemAtPosition(i).toString(), ttl);
+*/          /* Change of implementation to /proc method. */
+            String cmdLine = String.format(res.getString(R.string.proc_cmdline), ttl);
+            String ipv6_cmdLine = String.format(res.getString(R.string.proc_ipv6_cmdline), ttl);
+            Process exec = null, ipv6_exec = null;
+            try {
+                exec = Runtime.getRuntime().exec(new String[]{"su", "-c", cmdLine});
+                ipv6_exec = Runtime.getRuntime().exec(new String[]{"su", "-c", ipv6_cmdLine});
+                exec.waitFor();
+                ipv6_exec.waitFor();
+                doToast(TTLEditor.this, res.getString(R.string.ttl_success));
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("TTLEditor", "iptables failed.", e);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Log.e("TTLEditor", "iptables received signal before completing.", e);
+            } finally {
+                if (exec != null) exec.destroy();
+                if (ipv6_exec != null) ipv6_exec.destroy();
             }
         } else {
             changeTTL(TTLEditor.this, spinner.getSelectedItem().toString(), ttl);
         }
     }
+
 
     private void buildDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TTLEditor.this);

@@ -107,6 +107,7 @@ public class SettingsActivity extends PreferenceActivity {
         }
         ActionBar actionBar = getActionBar();
         try {
+            assert actionBar != null;
             actionBar.setIcon(getResources().getDrawable(R.drawable.ic_settings));
         } catch (Exception e) {
             e.printStackTrace();
