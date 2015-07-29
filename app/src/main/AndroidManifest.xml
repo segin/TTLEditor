@@ -11,6 +11,10 @@
     <uses-feature
         android:name="android.hardware.faketouch"
         android:required="false" />
+        
+    <meta-data 
+        android:name="com.google.android.backup.api_key" 
+        android:value="AEdPqrEAAAAIIOsMH2wyNqBwCzfqaRJaiPYWVwGuAM-vBOHsrw" />
 
     <supports-screens
         android:anyDensity="true"
