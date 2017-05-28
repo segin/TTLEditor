@@ -52,6 +52,7 @@
                 android:inputType="number"
                 android:text="@string/default_ttl"
                 android:clickable="true"
+                android:maxLength="3"
                 android:contentDescription="@string/desc_ttl"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
