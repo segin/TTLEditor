@@ -60,9 +60,13 @@ public class TTLEditor extends Activity {
     private Resources res;
     private String dbgmsg;
     private CheckBox ifDoAll;
+    private String currentTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeUtils.applyTheme(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        currentTheme = prefs.getString(ThemeUtils.PREF_THEME, ThemeUtils.THEME_HOLO_LIGHT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ttleditor);
 
@@ -109,6 +113,11 @@ public class TTLEditor extends Activity {
     public void onResume() {
         super.onResume();
         debugInit();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String theme = prefs.getString(ThemeUtils.PREF_THEME, ThemeUtils.THEME_HOLO_LIGHT);
+        if (!currentTheme.equals(theme)) {
+            recreate();
+        }
     }
 
     public static void doToast(Context context, String msg) {
