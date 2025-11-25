@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <ListPreference
+        android:key="theme_preference"
+        android:title="Theme"
+        android:summary="Change the application theme"
+        android:defaultValue="holo_light"
+        android:entries="@array/pref_theme_entries"
+        android:entryValues="@array/pref_theme_values" />
+
     <CheckBoxPreference
         android:key="onboot"
         android:title="@string/pref_title_onboot"

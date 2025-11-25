@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="org.segin.ttleditor" >
-
-    <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="21"
-        tools:ignore="GradleOverrides,OldTargetApi" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature
         android:name="android.hardware.faketouch"
@@ -28,6 +22,9 @@
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -36,6 +33,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".TTLEditor"
+            android:exported="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,13 +44,19 @@
             android:name=".SettingsActivity"
             android:label="@string/action_settings"
             android:parentActivityName=".TTLEditor"
+            android:exported="false"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.segin.ttleditor.TTLEditor" />
         </activity>
-        <service android:name=".BootService" />
-        <receiver android:name=".BootReceiver">
+        <service android:name=".BootService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Applying low-level network configurations" />
+        </service>
+        <receiver android:name=".BootReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED">
                 </action>

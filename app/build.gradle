@@ -1,42 +1,60 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-    }
-    compileSdkVersion 'android-25'
-    buildToolsVersion '25.0.3'
+    namespace 'org.segin.ttleditor'
+    compileSdkVersion 34
+    buildToolsVersion '34.0.0'
+
     defaultConfig {
         applicationId 'org.segin.ttleditor'
         minSdkVersion 11
-        targetSdkVersion 25
+        // targetSdkVersion is set in flavors
         versionCode 19
         versionName '1.0.15'
     }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        classic {
+            dimension "mode"
+            targetSdkVersion 25
+        }
+        store {
+            dimension "mode"
+            targetSdkVersion 34
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             lintOptions {
                 disable 'MissingTranslation'
+                abortOnError false
             }
         }
         debug {
-            signingConfig signingConfigs.debug
         }
     }
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/RootTools.jar')
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v4:21.+'
-    compile files('libs/RootShell.jar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/RootTools.jar')
+    // implementation 'com.android.support:support-v4:21.+' // Removed to avoid dependency hell, attempting raw API first
+    implementation files('libs/RootShell.jar')
 }
